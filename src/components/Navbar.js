@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg navbar-dark  bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
-            Navbar
-          </Link>
+          <NavLink className="navbar-brand" to="/">
+            iNotebook
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,16 +23,35 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                <NavLink
+                  aria-current="page"
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "active nav-link" : "nav-link"
+                  }
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "active nav-link" : "nav-link"
+                  }
+                >
                   About
-                </Link>
+                </NavLink>
               </li>
             </ul>
+            <form className="form-inline my-2 my-lg-0">
+              <Link to="/login" className="btn btn-primary mx-2">
+                Login
+              </Link>
+              <Link to="/signup" className="btn btn-primary mx-2">
+                Signup
+              </Link>
+            </form>
           </div>
         </div>
       </nav>
