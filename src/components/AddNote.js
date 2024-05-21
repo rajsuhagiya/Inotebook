@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import noteContext from "../context/notes/NoteContext";
+import { toast } from "react-toastify";
 
 const AddNote = () => {
   const context = useContext(noteContext);
@@ -15,6 +16,7 @@ const AddNote = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    toast.success("Note Added Successfully");
     setNote({ title: "", description: "", tag: "" });
   };
   return (
